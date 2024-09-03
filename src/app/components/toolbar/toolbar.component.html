@@ -1,0 +1,38 @@
+
+<div *ngIf="authService.tokenResponse() != null">
+  <div>Welcome, {{ authService.tokenResponse()!.username }}</div>
+  <div class="actions">
+    <a routerLink="admin">Admin Page</a>
+    <fa-icon class="logout-icon" [icon]="faRightFromBracket" size="xl" (click)="logout()"></fa-icon>
+  </div>
+</div>
+<div *ngIf="authService.tokenResponse() == null">
+  <div class="logo-and-name">
+    <div class="logo">
+      Logo
+    </div>
+    <div>
+      Israel D Fernando
+    </div>
+    <nav class="inside-toolbar">
+      <ul>
+        <li><a routerLink="home">Home</a></li>
+        <li><a routerLink="about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="spacer"></div>
+  <a class="login-link" routerLink="/login"><fa-icon [icon]="faRightToBracket" size="xl"></fa-icon></a>
+  <div class="toggle-menu" (click)="toggleShowMenu()">
+    <fa-icon [icon]="isShowingMenu ? faTimes : faBars" size="xl"></fa-icon>
+  </div>
+</div>
+<nav class="in-toolbar" [class.is-visible]="isShowingMenu">
+  <ul>
+    <li><a routerLink="home" (click)="toggleShowMenu()"><fa-icon [icon]="faHome"></fa-icon>&nbsp;&nbsp;Home</a></li>
+    <li><a routerLink="about" (click)="toggleShowMenu()"><fa-icon [icon]="faCircleInfo"></fa-icon>&nbsp;&nbsp;About</a></li>
+    <li><a routerLink="journals" (click)="toggleShowMenu()"><fa-icon [icon]="faBookOpen"></fa-icon>&nbsp;&nbsp;Journals</a></li>
+    <li><a routerLink="login" (click)="toggleShowMenu()"><fa-icon [icon]="faRightToBracket"></fa-icon>&nbsp;&nbsp;Login</a></li>
+  </ul>
+</nav> 

@@ -1,0 +1,23 @@
+@function custom-lighten($color, $percentWhite) {
+  @return mix(#ffffff, $color, $percentWhite);
+}
+
+@function custom-darken($color, $percentBlack) {
+  @return mix(#000000, $color, $percentBlack);
+}
+
+@function custom-desaturate($color, $percentGray) {
+  @return mix(grayscale($color), $color, $percentGray)
+}
+
+@function disable-color($color) {
+  $grayColor: grayscale($color);
+  $grayComponent: red($grayColor); // could have been blue() or green()
+  $desaturatedColor: custom-desaturate($color, 50%);
+
+  @if($grayComponent < 128) {
+    @return custom-lighten($desaturatedColor, 20%);
+  } @else {
+    @return custom-darken($desaturatedColor, 20%);
+  }
+}

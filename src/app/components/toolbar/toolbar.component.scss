@@ -1,0 +1,144 @@
+@use 'sass:color';
+@import '../../../scss/variables';
+@import '../../../scss/colorfunctions';
+@import '../../../scss/mixins';
+
+
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  padding: 1em;
+  background-color: $primary-color;
+  color: white;
+  transition: all 0.5s ease-in-out;
+
+  a {
+    color: white;
+  }
+
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-and-name {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    align-items: center;
+    font-weight: bold;
+    font-size: 140%;
+  }
+
+  nav.inside-toolbar {
+    display: none;
+  }
+
+  .login-link {
+    display: none;
+  }
+
+  .logout-icon {
+    cursor: pointer;
+  }
+
+  .toggle-menu {
+    cursor: pointer;
+  }
+
+  nav.in-toolbar {
+    position: absolute;    
+    top: 100%;
+    transform: translateX(-112%);
+    transition: all 0.5s ease-in-out;
+    background-color: color.adjust($color: $secondary-color, $alpha: -0.05);
+    color: white;
+    z-index: 100;
+    
+    @include standard-box-shadow();
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      list-style-type: none;
+      min-width: 350px;
+
+      li a {
+        display: block;
+        padding: 1em;
+        font-weight: bold;
+        font-size: 130%;
+        font-variant: small-caps;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        border-bottom: solid 1px color.adjust($color: #bdbdbd, $alpha: -0.5);
+      
+        &:hover {
+          background-color: custom-lighten($secondary-color, 20%);          
+        }
+      }
+    }
+
+    &.is-visible {
+      transform: translateX(0);
+    }
+  }
+
+  @media screen and (min-width: $medium-threshhold) {
+
+    div.spacer {
+      flex: 1;
+    }
+    
+    nav.in-toolbar {
+      display: none;
+    }
+
+    nav.inside-toolbar {
+      display: block;
+      margin-left: 3em;
+
+      ul {
+        display: flex;
+        gap: 3em;
+
+        li {
+          list-style-type: none;
+
+          a {
+            text-decoration: none;
+            font-variant:small-caps;
+            //font-weight: bold;
+            //font-size: 140%;
+          }
+        }
+      }     
+    }
+
+    .login-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    .toggle-menu {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: $small-threshhold) {
+  :host {    
+    background-color: color.adjust($primary-color, $alpha: -0.3);
+
+    
+    &.is-pinned {
+      background-color: $primary-color;
+    }
+
+  }
+}
+

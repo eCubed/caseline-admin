@@ -1,0 +1,25 @@
+form.basic-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  margin-bottom: 2em;
+}
+
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 1em;
+
+  & > * {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,74 @@
+@import './variables';
+@import './colorfunctions';
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary-color;
+  margin-bottom: 1em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+.error {
+  color: $error-color;
+}
+
+input, select, textarea {
+  border: solid 1px $input-border-color;
+  border-radius: 0.5em;
+  padding: 1em;
+
+  &.ng-dirty.ng-invalid {
+    border-color: $error-color;
+    background-color: custom-lighten($error-color, 95%);
+  }
+}
+
+button {
+  padding: 1em 2em;
+  border-radius: 0.5em;
+  background-color: $primary-color;
+  color: white;
+  cursor: pointer;
+
+  &[disabled] {
+    opacity: 0.5;
+    /*
+    background-color:  disable-color($primary-color);
+    color: disable-color(custom-lighten($primary-color, 70%));
+    */
+    cursor: not-allowed;
+  }
+
+  &.secondary {
+    background-color: #999999;
+  }
+
+  &.danger {
+    background-color: $error-color;
+  }
+
+
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+@media screen and (min-width: $medium-threshhold) {
+  p {
+    font-size: 150%;
+  }
+}
+

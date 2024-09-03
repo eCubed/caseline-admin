@@ -1,0 +1,16 @@
+.roster {
+
+  display: flex;
+  flex-direction: column;
+
+  .roster-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+
+    &:nth-child(2n + 1) {
+      background-color: #cccccc;
+    }
+  }
+}

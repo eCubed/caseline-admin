@@ -1,0 +1,31 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  color: $error-color;
+}
+
+form {
+  @include panel-container-styles;
+  padding: 1em;
+  min-width: 400px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+  }
+}

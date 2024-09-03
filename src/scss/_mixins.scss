@@ -1,0 +1,12 @@
+
+@mixin standard-box-shadow {  
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+
+@mixin panel-container-styles {
+  
+  border-radius: 0.5em;
+  background-color: white;
+  @include standard-box-shadow();
+}
+
