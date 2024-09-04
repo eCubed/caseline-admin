@@ -1,0 +1,12 @@
+<p>popup works!</p>
+<div class="popup-overlay" @fadeInOut *ngIf="visible" (click)="clickOverlay()">
+  <div class="popup-window" (click)="$event.stopPropagation()">
+    <div class="popup-header">
+      <div>{{ popupSettings?.title ?? "Popup Title" }}</div>
+      <button class="close-button" (click)="close()">&times;</button>
+    </div>
+    <div class="popup-content">
+      <ng-container #container></ng-container>
+    </div>
+  </div>
+</div>

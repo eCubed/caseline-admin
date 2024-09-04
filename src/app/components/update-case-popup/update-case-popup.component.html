@@ -1,0 +1,22 @@
+@if(caseFormGroup != null) {
+<form class="basic-form" [formGroup]="caseFormGroup" [appOverlayer]="isApiCalling" overlayText="Updating Case...">
+  <div>
+    <input id="name" formControlName="name" placeholder="name">
+    <div class="error" *ngIf="caseFormGroup.get('name')?.invalid && caseFormGroup.get('name')?.touched">
+      name is required.
+    </div>
+  </div>
+ 
+  <div>
+    <textarea id="body" formControlName="body" placeholder="Body"></textarea>
+    <div class="error" *ngIf="caseFormGroup.get('body')?.invalid && caseFormGroup.get('body')?.touched">
+      Body is required.
+    </div>  
+  </div>
+
+</form>
+}
+<div class="actions">
+  <button (click)="cancel()" class="secondary">Cancel</button>
+  <button (click)="save()" [disabled]="caseFormGroup.invalid">Save</button>
+</div>

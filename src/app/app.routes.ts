@@ -13,7 +13,11 @@ export const routes: Routes = [
     {
       path: 'admin',
       loadComponent: () => import('./pages/admin/admin.component').then(m => m.AdminComponent)
-    },    
+    },
+    {
+      path: 'edit-case/:caseId',
+      loadComponent: () => import('./pages/edit-case/edit-case.component').then(m => m.EditCaseComponent)
+    },
     {
       path: 'about',
       loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent)

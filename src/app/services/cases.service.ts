@@ -15,7 +15,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class CasesService {
-  private apiUrl = `${environment.apiRoot}/api/cases`;
+  private apiUrl = `${environment.apiRoot}cases`;
 
   constructor(private http: HttpClient,
               private authService: AuthService

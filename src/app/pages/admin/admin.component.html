@@ -1,1 +1,15 @@
-<p>admin works!</p>
+<h1>Cases</h1>
+<div class="actions" [appOverlayer]="isApiCalling" overlayText="Loading Cases">  
+  <button type="button" (click)="addNewCase()">Add New Case</button> 
+</div>
+<div class="roster">
+  @for (case of cases; track case.id) {
+    <div class="roster-item">
+      <div>{{ case.name }}</div>
+      <div class="actions">
+        <a [routerLink]="['/edit-case', case.id]">Edit</a>
+        Delete
+      </div>
+    </div>
+  }
+</div>
