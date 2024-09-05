@@ -1,23 +1,18 @@
-@import '../../../scss/variables';
-
 :host {
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 1em;
+  background-color: #dddddd;
+  padding: 0.5em;
 }
-.assertions {
+
+.assertion-display {
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
 
-.case-display {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-}
-
-.case-heading {
+.assertion-heading {
   display: flex;
   justify-content: space-between;
 
@@ -27,10 +22,9 @@
   }
 }
 
-.assertions {
+.evidences {
   display: flex;
   flex-direction: column;
   gap: 1em;
   padding-left: 3em;
 }
-

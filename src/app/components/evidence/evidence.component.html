@@ -1,0 +1,13 @@
+<div>
+  @if (evidence.incidentDate != null) {
+    {{ evidence.incidentDate | date: 'MMM dd, yyyy'}}
+  } @else {
+    -No Date-
+  }
+</div>
+<markdown [data]="evidence.body"></markdown>
+<div>
+  {{ evidence.weight }}
+</div>
+<div class="spacer"></div>
+<fa-icon [icon]="faPen" size="xl" (click)="openUpdateEvidence()"></fa-icon>

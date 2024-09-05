@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CasesService } from '../../services/cases.service';
 import { CommonModule } from '@angular/common';
 import { UpdateCaseModel } from '../../models/caseline';
+import { OverlayerDirective } from '../../directives/overlayer.directive';
 
 export interface UpdateCasePopupArgs {
   caseId: number
@@ -13,7 +14,9 @@ export interface UpdateCasePopupArgs {
   selector: 'app-update-case-popup',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    OverlayerDirective
   ],
   templateUrl: './update-case-popup.component.html',
   styleUrl: './update-case-popup.component.scss'
@@ -42,7 +45,7 @@ export class UpdateCasePopupComponent {
     try {
       this.isApiCalling = true
       const id = await this.casesService.updateCase(this.updateCasePopupArgs.caseId, this.caseFormGroup.value)
-      this.popupRef.close({ id: id, name: this.caseFormGroup.value.name })
+      this.popupRef.close({ id: id, case: this.caseFormGroup.value })
     } catch {
 
     } finally {

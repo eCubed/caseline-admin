@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+
+  & > * {
+    vertical-align: top;
+  }
+}
+
+spacer {
+  flex: 1
+}

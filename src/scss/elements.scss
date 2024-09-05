@@ -66,6 +66,11 @@ button {
   justify-content: end;
 }
 
+fa-icon {
+  cursor: pointer;
+  color: $primary-color;
+}
+
 @media screen and (min-width: $medium-threshhold) {
   p {
     font-size: 150%;

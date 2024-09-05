@@ -1,0 +1,25 @@
+<form class="basic-form" [formGroup]="evidenceFormGroup" [appOverlayer]="isApiCalling" overlayText="Creating evidence...">
+ 
+  <div>
+    <label>Incident Date</label>
+    <input id="incidentDate" type="date" formControlName="incidentDate" />
+    <button type="button" (click)="evidenceFormGroup.get('incidentDate')!.setValue(null)" [disabled]="evidenceFormGroup.get('incidentDate')!.value == null">Clear Date</button>
+  </div>
+  <div>
+    <textarea id="body" formControlName="body" placeholder="Body"></textarea>
+    <div class="error" *ngIf="evidenceFormGroup.get('body')?.invalid && evidenceFormGroup.get('body')?.touched">
+      Body is required.
+    </div> 
+  </div>
+  <div>
+    <input id="weight" formControlName="weight" placeholder="weight">
+    <div class="error" *ngIf="evidenceFormGroup.get('weight')?.invalid && evidenceFormGroup.get('weight')?.touched">
+      weight is required.
+    </div>
+  </div>
+
+</form>
+<div class="actions">
+  <button (click)="cancel()" class="secondary">Cancel</button>
+  <button (click)="save()" [disabled]="evidenceFormGroup.invalid">Save</button>
+</div>

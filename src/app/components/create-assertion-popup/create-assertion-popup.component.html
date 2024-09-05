@@ -1,0 +1,19 @@
+<form class="basic-form" [formGroup]="assertionFormGroup" [appOverlayer]="isApiCalling" overlayText="Creating assertion...">
+  <div>
+    <input id="name" formControlName="name" placeholder="name">
+    <div class="error" *ngIf="assertionFormGroup.get('name')?.invalid && assertionFormGroup.get('name')?.touched">
+      name is required.
+    </div>
+  </div>
+ 
+  <div>
+    <textarea id="body" formControlName="body" placeholder="Body"></textarea>
+    <div class="error" *ngIf="assertionFormGroup.get('body')?.invalid && assertionFormGroup.get('body')?.touched">
+      Body is required.
+    </div>  </div>
+
+</form>
+<div class="actions">
+  <button (click)="cancel()" class="secondary">Cancel</button>
+  <button (click)="save()" [disabled]="assertionFormGroup.invalid">Save</button>
+</div>

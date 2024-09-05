@@ -1,0 +1,15 @@
+<div class="assertion-display">
+  <div class="assertion-heading">
+    <span>{{ assertion.name }}</span><fa-icon [icon]="faPen" size="xl" (click)="openUpdateAssertion()"></fa-icon>
+  </div>  
+  <markdown [data]="assertion.body">
+  </markdown>
+</div>
+<div class="actions">
+  <button type="button" (click)="openCreateEvidence()">Add New Evidence</button>
+</div>
+<div class="evidences">
+  @for (evidence of assertion.evidences; track evidence.id) {
+    <app-evidence [evidence]="evidence"></app-evidence>
+  }
+</div>
