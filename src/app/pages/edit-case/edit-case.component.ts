@@ -77,8 +77,7 @@ export class EditCaseComponent implements OnInit, OnDestroy {
   openCreateAssertion() {
     const popupRef = this.popupService.open(CreateAssertionPopupComponent, { caseId: this.fullCase.id }, { title: 'Create Assertion'})
 
-    this.popupSubscription = popupRef.onClose.subscribe((createdAssertionPack: any) => {
-      
+    this.popupSubscription = popupRef.onClose.subscribe((createdAssertionPack: any) => {      
       if (createdAssertionPack != null) {
         this.fullCase.assertions.push({
           id: createdAssertionPack.id,
@@ -88,5 +87,11 @@ export class EditCaseComponent implements OnInit, OnDestroy {
         })
       }
     })
+  }
+
+  onAssertionDeleted(id: number) {
+    const idx = this.fullCase.assertions.findIndex(a => a.id == id)
+    if (idx > -1)
+      this.fullCase.assertions.splice(idx, 1)
   }
 }

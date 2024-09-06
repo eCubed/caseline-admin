@@ -1,13 +1,18 @@
-<div>
+<div class="date-heading">
+  <span>
   @if (evidence.incidentDate != null) {
     {{ evidence.incidentDate | date: 'MMM dd, yyyy'}}
   } @else {
     -No Date-
   }
+  </span>
+  <div class="actions">
+    <fa-icon [icon]="faXmark" size="xl" (click)="clickDeleteEvidence()"></fa-icon>
+    <fa-icon [icon]="faPen" size="xl" (click)="openUpdateEvidence()"></fa-icon>
+  </div>
 </div>
 <markdown [data]="evidence.body"></markdown>
 <div>
   {{ evidence.weight }}
 </div>
-<div class="spacer"></div>
-<fa-icon [icon]="faPen" size="xl" (click)="openUpdateEvidence()"></fa-icon>
+

@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { firstValueFrom } from 'rxjs';
 import { CreateAssertionModel, UpdateAssertionModel } from '../models/caseline';
 import { AuthService } from './auth.service';
+import { PostApiResponse } from '../models/core';
 
 @Injectable({
   providedIn: 'root',
@@ -24,9 +25,9 @@ export class AssertionsService {
     return headers;
   }
 
-  createAssertion(model: CreateAssertionModel): Promise<number> {
+  createAssertion(model: CreateAssertionModel): Promise<PostApiResponse> {
     return firstValueFrom(
-      this.http.post<number>(this.apiUrl, model, { headers: this.getAuthHeaders() })
+      this.http.post<PostApiResponse>(this.apiUrl, model, { headers: this.getAuthHeaders() })
     );
   }
 

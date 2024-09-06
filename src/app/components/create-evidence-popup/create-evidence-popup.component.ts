@@ -44,8 +44,8 @@ export class CreateEvidencePopupComponent {
   async save() {
     try {
       this.isApiCalling = true
-      const id = await this.evidencesService.createEvidence(this.evidenceFormGroup.value)
-      this.popupRef.close({ id: id, evidence: this.evidenceFormGroup.value })
+      const response = await this.evidencesService.createEvidence(this.evidenceFormGroup.value)
+      this.popupRef.close({ id: response.id, evidence: this.evidenceFormGroup.value })
     } catch {
 
     } finally {

@@ -14,7 +14,7 @@
 </div>
 <div class="assertions">
   @for (assertion of fullCase.assertions; track assertion.id) {
-    <app-assertion [assertion]="assertion"></app-assertion>
+    <app-assertion [assertion]="assertion" (assertionDeleted)="onAssertionDeleted($event)"></app-assertion>
   }
 </div>
 } @else {

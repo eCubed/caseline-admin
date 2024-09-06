@@ -38,8 +38,8 @@ export class CreateCasePopupComponent {
   async save() {
     try {
       this.isApiCalling = true
-      const id = await this.casesService.createCase(this.caseFormGroup.value)
-      this.popupRef.close({ id: id, name: this.caseFormGroup.value.name })
+      const response = await this.casesService.createCase(this.caseFormGroup.value)
+      this.popupRef.close({ id: response.id, name: this.caseFormGroup.value.name })
     } catch {
 
     } finally {

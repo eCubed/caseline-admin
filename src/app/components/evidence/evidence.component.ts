@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EditEvidenceModel, UpdateEvidenceModel } from '../../models/caseline';
 import { Subscription } from 'rxjs';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +8,8 @@ import { CommonModule } from '@angular/common';
 import { MarkdownComponent } from 'ngx-markdown';
 import { OverlayerDirective } from '../../directives/overlayer.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EvidencesService } from '../../services/evidences.service';
+import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
 
 @Component({
   selector: 'app-evidence',
@@ -23,11 +25,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 })
 export class EvidenceComponent {
   @Input() evidence!: EditEvidenceModel
+  @Output() evidenceDeleted: EventEmitter<number> = new EventEmitter<number>()
   popupSubscription!: Subscription
 
   faPen = faPen
+  faXmark = faXmark
 
-  constructor(private popupService: PopupService) {
+  constructor(private popupService: PopupService,
+              private evidencesService: EvidencesService
+  ) {
     
   }
 
@@ -49,6 +55,15 @@ export class EvidenceComponent {
         this.evidence.weight = updatedEvidence.weight
       }
     })
+  }
+
+  async clickDeleteEvidence() {
+    try {
+      await this.evidencesService.deleteEvidence(this.evidence.id)
+      this.evidenceDeleted.emit(this.evidence.id)
+    } catch {
+
+    }
   }
 
   

@@ -1,6 +1,10 @@
 <div class="assertion-display">
   <div class="assertion-heading">
-    <span>{{ assertion.name }}</span><fa-icon [icon]="faPen" size="xl" (click)="openUpdateAssertion()"></fa-icon>
+    <span>{{ assertion.name }}</span>
+    <div class="actions">
+      <fa-icon [icon]="faXmark" size="xl" (click)="clickDeleteAssertion()"></fa-icon>
+      <fa-icon [icon]="faPen" size="xl" (click)="openUpdateAssertion()"></fa-icon>
+    </div>
   </div>  
   <markdown [data]="assertion.body">
   </markdown>
@@ -10,6 +14,6 @@
 </div>
 <div class="evidences">
   @for (evidence of assertion.evidences; track evidence.id) {
-    <app-evidence [evidence]="evidence"></app-evidence>
+    <app-evidence [evidence]="evidence" (evidenceDeleted)="onEvidenceDeleted($event)"></app-evidence>
   }
 </div>

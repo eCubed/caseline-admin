@@ -10,6 +10,7 @@ import {
   AdminCaseDisplayModel,
 } from '../models/caseline';
 import { AuthService } from './auth.service';
+import { PostApiResponse } from '../models/core';
 
 @Injectable({
   providedIn: 'root',
@@ -30,9 +31,9 @@ export class CasesService {
     return headers;
   }
 
-  createCase(model: CreateCaseModel): Promise<number> {
+  createCase(model: CreateCaseModel): Promise<PostApiResponse> {
     return firstValueFrom(
-      this.http.post<number>(this.apiUrl, model, { headers: this.getAuthHeaders() })
+      this.http.post<PostApiResponse>(this.apiUrl, model, { headers: this.getAuthHeaders() })
     );
   }
 

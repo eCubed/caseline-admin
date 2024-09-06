@@ -45,7 +45,7 @@ export class UpdateEvidencePopupComponent {
   async save() {
     try {
       this.isApiCalling = true
-      const id = await this.evidencesService.updateEvidence(this.updateEvidencePopupArgs.id, this.evidenceFormGroup.value)
+      await this.evidencesService.updateEvidence(this.updateEvidencePopupArgs.id, this.evidenceFormGroup.value)
       this.popupRef.close(this.evidenceFormGroup.value)
     } catch {
 

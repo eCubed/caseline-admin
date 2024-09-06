@@ -44,8 +44,8 @@ export class CreateAssertionPopupComponent {
   async save() {
     try {
       this.isApiCalling = true
-      const id = await this.assertionsService.createAssertion(this.assertionFormGroup.value)
-      this.popupRef.close({ id: id, assertion: this.assertionFormGroup.value })
+      const response = await this.assertionsService.createAssertion(this.assertionFormGroup.value)
+      this.popupRef.close({ id: response.id, assertion: this.assertionFormGroup.value })
     } catch {
 
     } finally {

@@ -1,6 +1,6 @@
 :host {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 3px;
 
   & > * {
@@ -8,6 +8,8 @@
   }
 }
 
-spacer {
-  flex: 1
+.date-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
