@@ -19,13 +19,18 @@
 
   & > span {
     font-weight: bold;
-    font-size: 170%;
+    font-size: 250%;
   }
 }
 
-.evidences {
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
+ul.evidences {
   padding-left: 3em;
+  list-style-type: square;
+  & > li {
+    margin-bottom: 3em;
+    
+    &::marker {
+      font-size: 300%;
+    }
+  }
 }

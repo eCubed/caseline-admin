@@ -12,8 +12,10 @@
 <div class="actions">
   <button type="button" (click)="openCreateEvidence()">Add New Evidence</button>
 </div>
-<div class="evidences">
+<ul class="evidences">
   @for (evidence of assertion.evidences; track evidence.id) {
-    <app-evidence [evidence]="evidence" (evidenceDeleted)="onEvidenceDeleted($event)"></app-evidence>
+    <li>
+      <app-evidence [evidence]="evidence" (evidenceDeleted)="onEvidenceDeleted($event)"></app-evidence>
+    </li>
   }
-</div>
+</ul>

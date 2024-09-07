@@ -1,22 +1,21 @@
-<h2>Edit Case</h2>
+<h1>Edit Case</h1>
 
-@if (fullCase != null) {
-  
-<div class="case-display">
-  <div class="case-heading">
-    <span>{{ fullCase.name }}</span><fa-icon [icon]="faPen" size="xl" (click)="openUpdateCase()"></fa-icon>
-  </div>  
-  <markdown [data]="fullCase.body">
-  </markdown>
-</div>
-<div class="actions">
-  <button type="button" (click)="openCreateAssertion()">Add New Assertion</button>
-</div>
-<div class="assertions">
-  @for (assertion of fullCase.assertions; track assertion.id) {
-    <app-assertion [assertion]="assertion" (assertionDeleted)="onAssertionDeleted($event)"></app-assertion>
-  }
-</div>
+@if (fullCase != null) {  
+  <div class="case-display">
+    <div class="case-heading">
+      <span>{{ fullCase.name }}</span><fa-icon [icon]="faPen" size="xl" (click)="openUpdateCase()"></fa-icon>
+    </div>  
+    <markdown [data]="fullCase.body">
+    </markdown>
+  </div>
+  <div class="actions">
+    <button type="button" (click)="openCreateAssertion()">Add New Assertion</button>
+  </div>
+  <div class="assertions">
+    @for (assertion of fullCase.assertions; track assertion.id) {
+      <app-assertion [assertion]="assertion" (assertionDeleted)="onAssertionDeleted($event)"></app-assertion>
+    }
+  </div>
 } @else {
   <div>
     Case Loading...
