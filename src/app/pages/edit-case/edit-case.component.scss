@@ -5,10 +5,11 @@
   flex-direction: column;
   gap: 2em;
 }
+
 .assertions {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 3em !important;
 }
 
 .case-display {
