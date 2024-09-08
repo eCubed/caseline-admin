@@ -7,7 +7,7 @@ import { CreateCasePopupComponent } from '../../components/create-case-popup/cre
 import { Subscription } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
-import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faPen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PromptPopupComponent } from '../../components/prompt-popup/prompt-popup.component';
 
@@ -31,6 +31,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   faXmark = faXmark
   faPen = faPen
+  faEye = faEye
 
   constructor(private casesService: CasesService,
               private popupService: PopupService

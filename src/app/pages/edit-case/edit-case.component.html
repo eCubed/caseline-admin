@@ -7,10 +7,7 @@
     </div>  
     <markdown [data]="fullCase.body">
     </markdown>
-  </div>
-  <div class="actions">
-    <button type="button" (click)="openCreateAssertion()">Add New Assertion</button>
-  </div>
+  </div>  
   <div class="assertions">
     @for (assertion of fullCase.assertions; track assertion.id) {
       <app-assertion [assertion]="assertion" (assertionDeleted)="onAssertionDeleted($event)"></app-assertion>

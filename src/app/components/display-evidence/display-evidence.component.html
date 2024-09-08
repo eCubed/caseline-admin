@@ -1,0 +1,9 @@
+<div class="date-heading">
+  @if (evidence.incidentDate != null) {
+    {{ evidence.incidentDate | date: 'MMM dd, yyyy'}}
+  } @else {
+    -No Date-
+  }
+</div>
+<markdown [data]="evidence.body"></markdown>
+

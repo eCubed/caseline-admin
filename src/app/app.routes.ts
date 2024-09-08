@@ -23,6 +23,12 @@ export const routes: Routes = [
       data: ['admin']
     },
     {
+      path: 'view-case/:normalizedName',
+      canActivate: [authGuard],
+      loadComponent: () => import('./pages/view-case/view-case.component').then(m => m.ViewCaseComponent),
+      data: ['admin']
+    },
+    {
       path: 'about',
       loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent)
     },

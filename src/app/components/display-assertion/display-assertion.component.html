@@ -1,0 +1,15 @@
+<div class="assertion-display">
+  <div class="assertion-heading">
+    {{ assertion.name }}
+  </div>  
+  <markdown [data]="assertion.body">
+  </markdown>
+</div>
+<ul class="evidences">
+  @for (evidence of assertion.evidences; track evidence.body) {
+    <li>
+      <fa-icon [icon]="faDiamond" size="xl"></fa-icon>
+      <app-display-evidence [evidence]="evidence"></app-display-evidence>
+    </li>
+  }
+</ul>

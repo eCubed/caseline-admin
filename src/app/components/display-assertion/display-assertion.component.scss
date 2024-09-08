@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  background-color: #e2e2e2;
+  border-radius: 10px;
+  padding: 1.5em;
+}
+
+.assertion-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.assertion-heading {
+  font-weight: bold;
+  font-size: 250%;
+}
+
+ul.evidences {
+  padding-left: 3em;
+  list-style-type: none;
+
+  & > li {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-bottom: 3em;
+
+    & > fa-icon {
+      color: black;
+      cursor: default;
+    }
+
+    app-evidence {
+      flex: 1;
+    }
+  }
+}

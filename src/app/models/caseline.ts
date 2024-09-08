@@ -16,6 +16,7 @@ export interface PublicCaseDisplayModel {
 export interface AdminCaseDisplayModel {
   id: number;
   name: string;
+  normalizedName: string;
 }
 
 export interface EditCaseModel {
@@ -24,6 +25,13 @@ export interface EditCaseModel {
   normalizedName: string;
   body: string;
   assertions: EditAssertionModel[];
+}
+
+export interface DisplayCaseModel {
+  name: string
+  normalizedName: string;
+  body: string;
+  assertions: DisplayAssertionModel[];
 }
 
 export interface CreateAssertionModel {
@@ -44,6 +52,12 @@ export interface EditAssertionModel {
   evidences: EditEvidenceModel[];
 }
 
+export interface DisplayAssertionModel {
+  name: string
+  body: string;
+  evidences: DisplayEvidenceModel[];
+}
+
 export interface CreateEvidenceModel {
   body: string;
   incidentDate?: Date;
@@ -55,6 +69,11 @@ export interface UpdateEvidenceModel {
   body: string;
   incidentDate?: Date;
   weight: number;
+}
+
+export interface DisplayEvidenceModel {
+  body: string;
+  incidentDate?: Date;
 }
 
 export interface EditEvidenceModel {

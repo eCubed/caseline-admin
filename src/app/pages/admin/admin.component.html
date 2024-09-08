@@ -7,10 +7,14 @@
     <div class="roster-item">
       <div>{{ case.name }}</div>
       <div class="actions">
+        
+        <fa-icon [icon]="faXmark" size="xl" (click)="clickDeleteCase(case)"></fa-icon>
         <a [routerLink]="['/edit-case', case.id]">
           <fa-icon [icon]="faPen" size="xl"></fa-icon>
         </a>
-        <fa-icon [icon]="faXmark" size="xl" (click)="clickDeleteCase(case)"></fa-icon>
+        <a [routerLink]="['/view-case', case.normalizedName]">
+          <fa-icon [icon]="faEye" size="xl"></fa-icon>
+        </a>
       </div>
     </div>
   }

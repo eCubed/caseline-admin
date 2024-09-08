@@ -8,6 +8,7 @@ import {
   EditCaseModel,
   PublicCaseDisplayModel,
   AdminCaseDisplayModel,
+  DisplayCaseModel,
 } from '../models/caseline';
 import { AuthService } from './auth.service';
 import { PostApiResponse } from '../models/core';
@@ -52,6 +53,12 @@ export class CasesService {
   getCaseForEdit(id: number): Promise<EditCaseModel> {
     return firstValueFrom(
       this.http.get<EditCaseModel>(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() })
+    );
+  }
+
+  getCaseForDisplay(normalizedName: string): Promise<DisplayCaseModel> {
+    return firstValueFrom(
+      this.http.get<DisplayCaseModel>(`${this.apiUrl}/display/${normalizedName}`, { headers: this.getAuthHeaders() })
     );
   }
 

@@ -1,0 +1,19 @@
+
+@if (fullCase != null) {  
+  <div class="case-display">
+    <div class="case-heading">
+      {{ fullCase.name }}
+    </div>  
+    <markdown [data]="fullCase.body">
+    </markdown>
+  </div>  
+  <div class="assertions">
+    @for (assertion of fullCase.assertions; track assertion.name) {
+      <app-display-assertion [assertion]="assertion"></app-display-assertion>
+    }
+  </div>
+} @else {
+  <div>
+    Case Loading...
+  </div>
+}

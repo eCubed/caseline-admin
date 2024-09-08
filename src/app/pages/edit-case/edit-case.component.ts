@@ -1,9 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { PopupService } from '../../widgets/popup/popup.service';
 import { CasesService } from '../../services/cases.service';
-import { AssertionsService } from '../../services/assertions.service';
-import { EvidencesService } from '../../services/evidences.service';
-import { EditAssertionModel, EditCaseModel, UpdateAssertionModel, UpdateCaseModel } from '../../models/caseline';
+import { EditCaseModel } from '../../models/caseline';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UpdateCasePopupComponent } from '../../components/update-case-popup/update-case-popup.component';
@@ -36,9 +34,7 @@ export class EditCaseComponent implements OnInit, OnDestroy {
   route = inject(ActivatedRoute)
 
   constructor(private popupService: PopupService,
-              private casesService: CasesService,
-              private assertionsService: AssertionsService,
-              private evidencesService: EvidencesService
+              private casesService: CasesService
   ) {
   }
 
@@ -46,7 +42,6 @@ export class EditCaseComponent implements OnInit, OnDestroy {
     this.paramSubscription = this.route.paramMap.subscribe(async (params) => {
       const caseId = parseInt(params.get('caseId') ?? '0', 10)
       this.fullCase = await this.casesService.getCaseForEdit(caseId)
-      console.log(JSON.stringify(this.fullCase))
     })
   }
 

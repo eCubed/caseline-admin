@@ -39,7 +39,6 @@ export class ToolbarComponent implements AfterViewInit, OnDestroy {
               @Inject(DOCUMENT) private document: Document,
               private elementRef: ElementRef
             ){
-              console.log(JSON.stringify(authService.tokenResponse()))
     this.overlay = document.createElement('div')
     this.overlay.classList.add('overlay')
   }
