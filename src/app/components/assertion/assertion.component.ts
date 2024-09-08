@@ -2,13 +2,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { EditAssertionModel, UpdateAssertionModel } from '../../models/caseline';
 import { AssertionsService } from '../../services/assertions.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faDiamond, faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MarkdownComponent } from 'ngx-markdown';
 import { PopupService } from '../../widgets/popup/popup.service';
 import { UpdateAssertionPopupComponent } from '../update-assertion-popup/update-assertion-popup.component';
 import { Subscription } from 'rxjs';
 import { CreateEvidencePopupComponent } from '../create-evidence-popup/create-evidence-popup.component';
 import { EvidenceComponent } from '../evidence/evidence.component';
+import { PromptPopupComponent } from '../prompt-popup/prompt-popup.component';
 
 @Component({
   selector: 'app-assertion',
@@ -27,9 +28,11 @@ export class AssertionComponent {
   @Input() assertion!: EditAssertionModel
   @Output() assertionDeleted: EventEmitter<number> = new EventEmitter<number>()
   popupSubscription!: Subscription
+  isApiCalling: boolean = false
 
   faPen = faPen
   faXmark = faXmark
+  faDiamond = faDiamond
 
   constructor(private popupService: PopupService,
               private assertionsService: AssertionsService
@@ -79,12 +82,28 @@ export class AssertionComponent {
       this.assertion.evidences.splice(idx, 1)
   }
 
-  async clickDeleteAssertion() {
-    try {
-      await this.assertionsService.deleteAssertion(this.assertion.id)
-      this.assertionDeleted.emit(this.assertion.id)
-    } catch {
+  clickDeleteAssertion() {
 
-    }
+    const popupRef = this.popupService.open(PromptPopupComponent, {
+      prompt: `Are you sure you want to delete ${this.assertion.name}?`
+    }, {
+      maxHeight: '300px',
+      maxWidth: '350px'
+    });
+
+    this.popupSubscription = popupRef.onClose.subscribe(async (response?: boolean) => {
+      if(response) {
+        try {
+          this.isApiCalling = true
+          await this.assertionsService.deleteAssertion(this.assertion.id)
+          this.assertionDeleted.emit(this.assertion.id)          
+        } catch {
+          
+        } finally {
+          this.isApiCalling = false
+        }
+      }
+    })
+    
   }
 }

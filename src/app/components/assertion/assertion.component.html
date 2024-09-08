@@ -15,6 +15,7 @@
 <ul class="evidences">
   @for (evidence of assertion.evidences; track evidence.id) {
     <li>
+      <fa-icon [icon]="faDiamond" size="xl"></fa-icon>
       <app-evidence [evidence]="evidence" (evidenceDeleted)="onEvidenceDeleted($event)"></app-evidence>
     </li>
   }

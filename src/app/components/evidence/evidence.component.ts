@@ -10,6 +10,7 @@ import { OverlayerDirective } from '../../directives/overlayer.directive';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EvidencesService } from '../../services/evidences.service';
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
+import { PromptPopupComponent } from '../prompt-popup/prompt-popup.component';
 
 @Component({
   selector: 'app-evidence',
@@ -27,6 +28,7 @@ export class EvidenceComponent {
   @Input() evidence!: EditEvidenceModel
   @Output() evidenceDeleted: EventEmitter<number> = new EventEmitter<number>()
   popupSubscription!: Subscription
+  isApiCalling: boolean = false
 
   faPen = faPen
   faXmark = faXmark
@@ -58,12 +60,29 @@ export class EvidenceComponent {
   }
 
   async clickDeleteEvidence() {
-    try {
-      await this.evidencesService.deleteEvidence(this.evidence.id)
-      this.evidenceDeleted.emit(this.evidence.id)
-    } catch {
+    const popupRef = this.popupService.open(PromptPopupComponent, {
+      prompt: `Are you sure you want to delete this evidence?`
+    }, {
+      maxHeight: '300px',
+      maxWidth: '350px'
+    });
 
-    }
+    this.popupSubscription = popupRef.onClose.subscribe(async (response?: boolean) => {
+      if(response) {
+        try {
+          this.isApiCalling = true
+          await this.evidencesService.deleteEvidence(this.evidence.id)
+          this.evidenceDeleted.emit(this.evidence.id)
+         
+        } catch {
+          
+        } finally {
+          this.isApiCalling = false
+        }
+      }
+    })
+    
+    
   }
 
   

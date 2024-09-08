@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 2em;
-  background-color: #dddddd;
+  background-color: #e2e2e2;
   border-radius: 10px;
   padding: 1.5em;
 }
@@ -25,12 +25,21 @@
 
 ul.evidences {
   padding-left: 3em;
-  list-style-type: square;
+  list-style-type: none;
+
   & > li {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
     margin-bottom: 3em;
-    
-    &::marker {
-      font-size: 300%;
+
+    & > fa-icon {
+      color: black;
+      cursor: default;
+    }
+
+    app-evidence {
+      flex: 1;
     }
   }
 }
